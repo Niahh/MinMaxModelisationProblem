@@ -68,6 +68,14 @@ public class Main {
 
         plateau.displayPlateau();
 
+
+        Position position = new Position(0,1);
+        Mouvement mv = new Mouvement(j1.getFantassins().get(0), position, plateau);
+
+        Action action1 = new Action(mv,null);
+
+        action1.
+
     }
 
 

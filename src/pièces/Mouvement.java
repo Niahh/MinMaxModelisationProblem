@@ -32,29 +32,29 @@ public class Mouvement {
     }
 
     public boolean isPossible(){
-        boolean mouvement_permi = false;
-        boolean case_exists = false;
-        boolean case_empty = false;
+        boolean mouvementPermi = false;
+        boolean caseExists = false;
+        boolean caseEmpty = false;
 
         for (Position pos : this.piece.mouvementPossibles()){
             if (pos.equals(choixMouvement)){
-                mouvement_permi = true;
+                mouvementPermi = true;
                 break;
             }
         }
 
-         if (mouvement_permi){
+         if (mouvementPermi){
             Case ca = this.plateau.recoverCaseFromPiece(this.getPiece());
             if(ca != null){
-                case_exists = true;
+                caseExists = true;
             }
 
-            if (case_exists){
-                case_empty = !ca.isOccupied();
+            if (caseExists){
+                caseEmpty = !ca.isOccupied();
             }
          }
 
-        return mouvement_permi && case_exists && case_empty;
+        return mouvementPermi && caseExists && caseEmpty;
     }
 
     public void applyMouvement(){

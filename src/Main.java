@@ -72,9 +72,11 @@ public class Main {
         Position position = new Position(0,1);
         Mouvement mv = new Mouvement(j1.getFantassins().get(0), position, plateau);
 
-        Action action1 = new Action(mv,null);
+        mv.applyMouvement();
 
-        action1.
+        System.out.println("Test deplacement piece");
+
+        plateau.displayPlateau();
 
     }
 

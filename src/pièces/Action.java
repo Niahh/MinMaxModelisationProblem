@@ -12,6 +12,7 @@ public class Action {
     public Action(Plateau plateau, Piece piece, Position mv, Position at){
 
         this.plateau = plateau;
+        this.piece = piece;
         this.mouv = new Mouvement(piece, mv, this.plateau);
         this.attq = new Attaque(piece, at, this.plateau);
     }

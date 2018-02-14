@@ -7,26 +7,13 @@ import java.util.List;
 
 public class Main {
 
-    public static void placementPieceJoueur1(Plateau plateau){
-
-    }
-
-    public static void placementPieceJoueur2(Plateau plateau){
-
-    }
-
-    public static void placementPieceDepart(Plateau plateau){
-        placementPieceJoueur1(plateau);
-        placementPieceJoueur2(plateau);
-    }
-
     public static Joueur creationJoueur1(Plateau plateau){
         // Creation du premier joueur et initialisation de ces pièces
         List<Fantassin> fantassins = new ArrayList<>();
-        fantassins.add(new Fantassin(0, plateau.getCaseFromPosition(new Position(0,0))));
+        fantassins.add(new Fantassin(1, plateau.getCaseFromPosition(new Position(0,0))));
 
         List<Mitrailleurs> mitrailleurs = new ArrayList<>();
-        mitrailleurs.add(new Mitrailleurs(0, plateau.getCaseFromPosition(new Position(3,0))));
+        mitrailleurs.add(new Mitrailleurs(1, plateau.getCaseFromPosition(new Position(3,0))));
 
         List<TourMobile> tourMobiles = new ArrayList<>();
 
@@ -34,8 +21,6 @@ public class Main {
 
         return j;
     }
-
-
 
     public static Joueur creationJoueur2(Plateau plateau){
         // Creation du second joueur et initialisation de ces pièces

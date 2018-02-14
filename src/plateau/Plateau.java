@@ -48,6 +48,18 @@ public class Plateau {
         }
     }
 
+    public Case recoverCaseFromPiece(Piece piece){
+        Case ca = null;
+
+        for (Case cas : this.cases){
+            if (cas.getPiece() == piece){
+                ca = cas;
+            }
+        }
+
+        return ca;
+    }
+
     private boolean symboleExist(String symbole){
         return symbole.equals(" ") || symbole.equals("S") || symbole.equals("R") || symbole.equals("L");
     }

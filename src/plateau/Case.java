@@ -1,48 +1,42 @@
 package plateau;
 
+import pièces.Piece;
+import pièces.Position;
+
 public class Case {
-    private int posX;
-    private int posY;
-    private boolean isOccupied;
+    private Position position;
+    private Piece piece;
     private String value;
 
     public Case(){
         // TO DO
-        this.posY = -1;
-        this.posX = -1;
+        this.position.setPosX(-1);
+        this.position.setPosY(-1);
         this.value = " ";
+        this.piece = null;
     }
 
-    public Case(int posX, int posY, boolean isOccupied, String value){
-        this.posX = posX;
-        this.posY = posY;
-        this.isOccupied = false;
+    public Case(Position pos, Piece piece, String value){
+        this.position = pos;
+        //this.position.clone(pos);
+        this.piece = piece;
         this.value = value;
     }
 
-
-    public int getPosX() {
-        return posX;
+    public Position getPosition(){
+        return this.position;
     }
 
-    public void setPosX(int posX) {
-        this.posX = posX;
-    }
-
-    public int getPosY() {
-        return posY;
-    }
-
-    public void setPosY(int posY) {
-        this.posY = posY;
+    public void setPosition(Position pos){
+        this.position.clone(pos);
     }
 
     public boolean isOccupied() {
-        return isOccupied;
-    }
 
-    public void setOccupied(boolean occupied) {
-        isOccupied = occupied;
+        if (piece == null)
+            return false;
+        else
+            return true;
     }
 
     public String getValue() {
@@ -65,5 +59,20 @@ public class Case {
 
     public void displayCase(){
         System.out.println(this.formatStringCase());
+    }
+
+    public Piece getPiece() {
+        return piece;
+    }
+
+    public void setPiece(Piece piece) {
+        this.piece = piece;
+    }
+
+
+    public void clone(Case cas){
+        this.position.clone(cas.getPosition());
+        this.piece.clone(cas.getPiece());
+        this.value = cas.getValue();
     }
 }

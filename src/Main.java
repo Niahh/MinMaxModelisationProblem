@@ -26,7 +26,7 @@ public class Main {
         fantassins.add(new Fantassin(0, plateau.getCaseFromPosition(new Position(0,0))));
 
         List<Mitrailleurs> mitrailleurs = new ArrayList<>();
-        mitrailleurs.add(new Mitrailleurs(0, plateau.getCaseFromPosition(new Position(2,0))));
+        mitrailleurs.add(new Mitrailleurs(0, plateau.getCaseFromPosition(new Position(3,0))));
 
         List<TourMobile> tourMobiles = new ArrayList<>();
 
@@ -35,10 +35,12 @@ public class Main {
         return j;
     }
 
+
+
     public static Joueur creationJoueur2(Plateau plateau){
         // Creation du second joueur et initialisation de ces pièces
         List<Fantassin> fantassins2 = new ArrayList<>();
-        fantassins2.add(new Fantassin(0, plateau.getCaseFromPosition(new Position(2,3))));
+        fantassins2.add(new Fantassin(0, plateau.getCaseFromPosition(new Position(0,3))));
 
         List<Mitrailleurs> mitrailleurs2 = new ArrayList<>();
         mitrailleurs2.add(new Mitrailleurs(0, plateau.getCaseFromPosition(new Position(3, 3))));
@@ -52,42 +54,30 @@ public class Main {
 
 
     public static void main(String[] args) {
-        System.out.println("Mission 3!");
+        testAction();
+    }
+
+    public static void testAction(){
+        System.out.println("Test Action !");
 
         // Création d'un plateau 4 x 4 cases
         Plateau plateau = new Plateau(4, 4);
 
-        // Affichage du plateau
-        plateau.displayPlateau();
-
         Joueur j1 = creationJoueur1(plateau);
-
-        plateau.displayPlateau();
-
         Joueur j2 = creationJoueur2(plateau);
 
         plateau.displayPlateau();
 
+        Position positionDeplacement = new Position( 0,2);
+        Position positionAttaque = new Position( 0,3);
 
-        Position position = new Position(0,1);
-        Mouvement mv = new Mouvement(j1.getFantassins().get(0), position, plateau);
+        Action action = new Action(plateau, j1.getFantassins().get(0), positionDeplacement, positionAttaque);
 
-        System.out.println(mv.applyMouvement());
-
-        System.out.println("Test deplacement piece");
-
-        plateau.displayPlateau();
-
-        j1.getFantassins().get(0).getCase().getPosition().displayInfoPosition();
-
-        Position position2 = new Position(3,3);
-        Mouvement mv2 = new Mouvement(j1.getFantassins().get(0), position2, plateau);
-
-        System.out.println(mv2.applyMouvement());
+        action.apply();
 
         plateau.displayPlateau();
 
-        j1.getFantassins().get(0).getCase().getPosition().displayInfoPosition();
+        System.out.println("Liste de fantassins du joueur 2 est vide : " + j2.getFantassins().isEmpty());
     }
 
 

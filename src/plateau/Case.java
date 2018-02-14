@@ -69,6 +69,11 @@ public class Case {
         this.piece = piece;
     }
 
+    public void setToNull(){
+        this.setPiece(null);
+        this.setValue(" ");
+    }
+
 
     public void clone(Case cas){
         this.position.clone(cas.getPosition());

@@ -38,7 +38,6 @@ public class Plateau {
     }
 
     public void setCase(Piece piece){
-        piece.getCase().getPosition().displayInfoPosition();
         if (piece.getCase().getPosition().getPosX() >= 0 && piece.getCase().getPosition().getPosX() < tailleLongeur && piece.getCase().getPosition().getPosY() >= 0 && piece.getCase().getPosition().getPosY() < tailleLargeur && symboleExist(piece.getSymbole())){
             this.cases.get((piece.getCase().getPosition().getPosX() + piece.getCase().getPosition().getPosY() * this.tailleLargeur)).setValue(piece.getSymbole());
             this.cases.get((piece.getCase().getPosition().getPosX() + piece.getCase().getPosition().getPosY() * this.tailleLargeur)).setPiece(piece);

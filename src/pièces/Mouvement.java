@@ -40,17 +40,23 @@ public class Mouvement {
             caseExists = true;
 
         if (caseExists){
-            caseEmpty = !ca.isOccupied();
+            caseEmpty = !plateau.getCaseFromPosition(choixMouvement).isOccupied();
         }
 
         return  caseExists && caseEmpty;
     }
 
     public void applyMouvement(){
+        System.out.println(this.isPossible());
         if (this.isPossible()){
+            System.out.println("applyMouvement");
             Case ca = this.plateau.recoverCaseFromPiece(this.getPiece());
             ca.setPiece(null);
-            this.piece.setCase(this.getPlateau().getCaseFromPosition(this.getChoixMouvement()));
+            ca.setValue(" ");
+            Case caseCible = this.getPlateau().getCaseFromPosition(this.getChoixMouvement());
+            caseCible.setPiece(this.getPiece());
+            caseCible.setValue(this.getPiece().getSymbole());
+            this.piece.setCase(caseCible);
         }
     }
 

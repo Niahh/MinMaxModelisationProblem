@@ -31,7 +31,7 @@ public class Fantassin implements Piece {
 
     @Override
     public void setCase(Case caseToSet) {
-        this.cas.clone(caseToSet);
+        this.cas = caseToSet;
     }
 
     @Override

@@ -78,6 +78,8 @@ public class Main {
 
         plateau.displayPlateau();
 
+        j1.getFantassins().get(0).getCase().getPosition().displayInfoPosition();
+
     }
 
 

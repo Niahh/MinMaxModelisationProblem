@@ -111,6 +111,17 @@ public class Plateau {
         return null;
     }
 
+    public boolean isInThePlateau(Case cas){
+        boolean isInside = false;
+
+        for (Case ca : this.cases){
+            if (ca.getPosition().equals(cas.getPosition())){
+                isInside = true;
+            }
+        }
+        return isInside;
+    }
+
     public String formatPlateau(){
         StringBuilder str = new StringBuilder();
 

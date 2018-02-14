@@ -72,7 +72,7 @@ public class Main {
         Position position = new Position(0,1);
         Mouvement mv = new Mouvement(j1.getFantassins().get(0), position, plateau);
 
-        mv.applyMouvement();
+        System.out.println(mv.applyMouvement());
 
         System.out.println("Test deplacement piece");
 
@@ -80,6 +80,14 @@ public class Main {
 
         j1.getFantassins().get(0).getCase().getPosition().displayInfoPosition();
 
+        Position position2 = new Position(3,3);
+        Mouvement mv2 = new Mouvement(j1.getFantassins().get(0), position2, plateau);
+
+        System.out.println(mv2.applyMouvement());
+
+        plateau.displayPlateau();
+
+        j1.getFantassins().get(0).getCase().getPosition().displayInfoPosition();
     }
 
 

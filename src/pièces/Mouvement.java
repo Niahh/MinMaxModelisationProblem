@@ -35,7 +35,7 @@ public class Mouvement {
         boolean caseExists = false;
         boolean caseEmpty = false;
 
-        Case ca = this.plateau.recoverCaseFromPiece(this.getPiece());
+        Case ca = this.plateau.getCaseFromPosition(this.choixMouvement);
         if(ca != null)
             caseExists = true;
 
@@ -46,10 +46,8 @@ public class Mouvement {
         return  caseExists && caseEmpty;
     }
 
-    public void applyMouvement(){
-        System.out.println(this.isPossible());
+    public boolean applyMouvement(){
         if (this.isPossible()){
-            System.out.println("applyMouvement");
             Case ca = this.plateau.recoverCaseFromPiece(this.getPiece());
             ca.setPiece(null);
             ca.setValue(" ");
@@ -57,6 +55,9 @@ public class Mouvement {
             caseCible.setPiece(this.getPiece());
             caseCible.setValue(this.getPiece().getSymbole());
             this.piece.setCase(caseCible);
+            return true;
+        } else {
+            return false;
         }
     }
 

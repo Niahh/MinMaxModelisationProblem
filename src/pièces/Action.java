@@ -41,4 +41,11 @@ public class Action {
     public void setAttq(Attaque attq) {
         this.attq = attq;
     }
+
+    public void display(){
+        System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+        this.mouv.display();
+        this.attq.display();
+        System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+    }
 }

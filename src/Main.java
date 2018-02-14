@@ -39,7 +39,8 @@ public class Main {
 
 
     public static void main(String[] args) {
-        testAction();
+        //testAction();
+        testListActions();
     }
 
     public static void testAction(){
@@ -63,6 +64,26 @@ public class Main {
         plateau.displayPlateau();
 
         System.out.println("Liste de fantassins du joueur 2 est vide : " + j2.getFantassins().isEmpty());
+    }
+
+    public static void testListActions(){
+
+        System.out.println("Test Action !");
+
+        // Création d'un plateau 4 x 4 cases
+        Plateau plateau = new Plateau(4, 4);
+
+        Joueur j1 = creationJoueur1(plateau);
+
+        List<Action> actions = j1.allActionsPossiblePiece(plateau, j1.getFantassins().get(0));
+
+        System.out.println(actions.size());
+
+        for (Action act : actions){
+            act.display();
+        }
+
+        plateau.displayPlateau();
     }
 
 

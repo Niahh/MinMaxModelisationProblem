@@ -1,5 +1,7 @@
 package pièces;
 
+import javafx.geometry.Pos;
+import plateau.Case;
 import plateau.Plateau;
 
 import java.util.ArrayList;
@@ -104,6 +106,62 @@ public class Joueur {
 
     public void setPlateau(Plateau plateau) {
         this.plateau = plateau;
+    }
+
+    public List<Action> allActionsPossiblePiece(Plateau plateau, Piece piece){
+        List<Action > actions = new ArrayList<>();
+
+        Case cas = piece.getCase();
+
+        System.out.println("Mouvement possibles : " + this.allMouvementsPossiblePiece(plateau, piece).size());
+
+        int attaquesPos = 0;
+
+        for (Position mv : this.allMouvementsPossiblePiece(plateau, piece)){
+            Mouvement mouv = new Mouvement(piece, mv, plateau);
+
+            for (Position attq : allAttaquesPossiblePiece(plateau, mouv)){
+                attaquesPos += allAttaquesPossiblePiece(plateau, mouv).size();
+                actions.add(new Action(plateau, piece, mv, attq));
+            }
+        }
+
+        System.out.println("Attaque possibles : " + attaquesPos);
+        return actions;
+    }
+
+    public List<Position> allAttaquesPossiblePiece(Plateau plateau, Mouvement mv){
+        List<Position> attaques = new ArrayList<>();
+
+        Position positionTmp = mv.getPiece().getCase().getPosition();
+
+        mv.applyMouvement();
+
+        for (Position pos : mv.getPiece().attaquesPossibles()){
+            Case cas = plateau.getCaseFromPosition(pos);
+            if (cas != null){
+                attaques.add(pos);
+            }
+        }
+
+        Mouvement mvReturn = new Mouvement(mv.getPiece(), positionTmp, plateau);
+        mvReturn.applyMouvement();
+
+        return attaques;
+    }
+
+    public List<Position> allMouvementsPossiblePiece(Plateau plateau, Piece piece){
+
+        List<Position> mouvements = new ArrayList<>();
+
+        for (Position pos : piece.mouvementPossibles()){
+            Case ca = plateau.getCaseFromPosition(pos);
+            if ( ca != null && ca.getPiece() == null){
+                mouvements.add(pos);
+            }
+        }
+
+        return mouvements;
     }
 
     public List<Action> getActions() {

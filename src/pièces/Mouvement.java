@@ -68,4 +68,13 @@ public class Mouvement {
     public void setPlateau(Plateau plateau) {
         this.plateau = plateau;
     }
+
+    public void display(){
+        System.out.println("==========================================");
+        System.out.println("Mouvement de la case : ");
+        this.piece.getCase().displayCase();
+        System.out.println(" vers la position : ");
+        this.choixMouvement.displayInfoPosition();
+        System.out.println("==========================================");
+    }
 }

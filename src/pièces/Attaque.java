@@ -79,4 +79,11 @@ public class Attaque {
     public void setPlateau(Plateau plateau) {
         this.plateau = plateau;
     }
+
+    public void display(){
+        System.out.println("==========================================");
+        System.out.println("Attaque : ");
+        this.cible.displayInfoPosition();
+        System.out.println("==========================================");
+    }
 }

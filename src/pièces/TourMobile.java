@@ -36,12 +36,12 @@ public class TourMobile implements Piece {
 
     @Override
     public Joueur getJoueur() {
-        return null;
+        return this.joueur;
     }
 
     @Override
     public void setJoueur(Joueur joueur) {
-
+        this.joueur = joueur;
     }
 
     @Override

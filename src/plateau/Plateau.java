@@ -37,10 +37,12 @@ public class Plateau {
         }
     }
 
-    public void setCase(Position position, Piece piece){
-        if (position.getPosX() >= 0 && position.getPosX() < 25 && position.getPosY() >= 0 && position.getPosY() < 25 && symboleExist(piece.getSymbole())){
-            this.cases.get((position.getPosX() + position.getPosY() * this.tailleLargeur)).setValue(piece.getSymbole());
-            this.cases.get((position.getPosX() + position.getPosY() * this.tailleLargeur)).setPiece(piece);
+    public void setCase(Piece piece){
+        piece.getCase().getPosition().displayInfoPosition();
+        if (piece.getCase().getPosition().getPosX() >= 0 && piece.getCase().getPosition().getPosX() < tailleLongeur && piece.getCase().getPosition().getPosY() >= 0 && piece.getCase().getPosition().getPosY() < tailleLargeur && symboleExist(piece.getSymbole())){
+            this.cases.get((piece.getCase().getPosition().getPosX() + piece.getCase().getPosition().getPosY() * this.tailleLargeur)).setValue(piece.getSymbole());
+            this.cases.get((piece.getCase().getPosition().getPosX() + piece.getCase().getPosition().getPosY() * this.tailleLargeur)).setPiece(piece);
+            System.out.println("Piece " + piece.getSymbole() + " insere !");
         } else {
             System.out.println(" XXX La case ne peut pas être inséré XXX");
         }

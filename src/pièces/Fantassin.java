@@ -41,7 +41,7 @@ public class Fantassin implements Piece {
 
     @Override
     public void setJoueur(Joueur joueur) {
-        this.joueur.clone(joueur);
+        this.joueur = joueur;
     }
 
     @Override

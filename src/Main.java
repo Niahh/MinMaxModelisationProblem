@@ -20,6 +20,36 @@ public class Main {
         placementPieceJoueur2(plateau);
     }
 
+    public static Joueur creationJoueur1(Plateau plateau){
+        // Creation du premier joueur et initialisation de ces pièces
+        List<Fantassin> fantassins = new ArrayList<>();
+        fantassins.add(new Fantassin(0, plateau.getCaseFromPosition(new Position(0,0))));
+
+        List<Mitrailleurs> mitrailleurs = new ArrayList<>();
+        mitrailleurs.add(new Mitrailleurs(0, plateau.getCaseFromPosition(new Position(2,0))));
+
+        List<TourMobile> tourMobiles = new ArrayList<>();
+
+        Joueur j = new Joueur(plateau, fantassins, mitrailleurs, tourMobiles);
+
+        return j;
+    }
+
+    public static Joueur creationJoueur2(Plateau plateau){
+        // Creation du second joueur et initialisation de ces pièces
+        List<Fantassin> fantassins2 = new ArrayList<>();
+        fantassins2.add(new Fantassin(0, plateau.getCaseFromPosition(new Position(2,3))));
+
+        List<Mitrailleurs> mitrailleurs2 = new ArrayList<>();
+        mitrailleurs2.add(new Mitrailleurs(0, plateau.getCaseFromPosition(new Position(3, 3))));
+
+        List<TourMobile> tourMobiles2 = new ArrayList<>();
+
+        Joueur j = new Joueur(plateau, fantassins2, mitrailleurs2, tourMobiles2);
+
+        return j;
+    }
+
 
     public static void main(String[] args) {
         System.out.println("Mission 3!");
@@ -30,28 +60,13 @@ public class Main {
         // Affichage du plateau
         plateau.displayPlateau();
 
-        // Creation du premier joueur et initialisation de ces pièces
-        List<Fantassin> fantassins = new ArrayList<>();
-        fantassins.add(new Fantassin(0, plateau.getCaseFromPosition(new Position(0,0))));
+        Joueur j1 = creationJoueur1(plateau);
 
-        List<Mitrailleurs> mitrailleurs = new ArrayList<>();
-        mitrailleurs.add(new Mitrailleurs(0, plateau.getCaseFromPosition(new Position(2,0))));
+        plateau.displayPlateau();
 
-        List<TourMobile> tourMobiles = new ArrayList<>();
+        Joueur j2 = creationJoueur2(plateau);
 
-
-        Joueur j1 = new Joueur(plateau, fantassins, mitrailleurs, tourMobiles);
-
-        // Creation du second joueur et initialisation de ces pièces
-        List<Fantassin> fantassins2 = new ArrayList<>();
-        fantassins.add(new Fantassin(0, plateau.getCaseFromPosition(new Position(2,3))));
-
-        List<Mitrailleurs> mitrailleurs2 = new ArrayList<>();
-        mitrailleurs.add(new Mitrailleurs(0, plateau.getCaseFromPosition(new Position(3, 3))));
-
-        List<TourMobile> tourMobiles2 = new ArrayList<>();
-        Joueur j2 = new Joueur(plateau, fantassins2, mitrailleurs2, tourMobiles2);
-
+        plateau.displayPlateau();
 
     }
 

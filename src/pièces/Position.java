@@ -34,4 +34,8 @@ public class Position {
         return (this.posX == pos.getPosX() && this.posY == pos.getPosY());
     }
 
+    public void displayInfoPosition(){
+        System.out.println("x :" + this.getPosX() + " - y : " + this.getPosY());
+    }
+
 }

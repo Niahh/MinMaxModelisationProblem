@@ -2,20 +2,47 @@ package pièces;
 
 import plateau.Plateau;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Joueur {
-    private List<Fantassin> fantassins;
-    private List<TourMobile> tourMobiles;
-    private List<Mitrailleurs> mitrailleurs;
+    private List<Fantassin> fantassins = new ArrayList<>();
+    private List<TourMobile> tourMobiles = new ArrayList<>();
+    private List<Mitrailleurs> mitrailleurs = new ArrayList<>();
     private Plateau plateau;
 
     public Joueur(Plateau plateau, List<Fantassin> fantassins, List<Mitrailleurs> mitrailleurs, List<TourMobile> tourMobiles){
-        this.plateau.clone(plateau);
+        this.plateau = plateau;
 
         this.setFantassins(fantassins);
         this.setMitrailleurs(mitrailleurs);
         this.setTourMobiles(tourMobiles);
+
+        placementPiecePlateau();
+    }
+
+    public void placementPiecePlateau(){
+        //placementTours();
+        placementMitrailleurs();
+        placementFantassins();
+    }
+
+    public void placementTours(){
+        for (TourMobile tr : this.tourMobiles){
+            this.plateau.setCase(tr);
+        }
+    }
+
+    public void placementMitrailleurs(){
+        for (Mitrailleurs mi : this.mitrailleurs){
+            this.plateau.setCase(mi);
+        }
+    }
+
+    public void placementFantassins(){
+        for (Fantassin fa : this.fantassins){
+            this.plateau.setCase(fa);
+        }
     }
 
     public List<Fantassin> getFantassins() {
@@ -24,7 +51,10 @@ public class Joueur {
 
     public void setFantassins(List<Fantassin> fantassins) {
         this.fantassins.clear();
-        this.fantassins.addAll(fantassins);
+        for (Fantassin fa : fantassins){
+            fa.setJoueur(this);
+            this.fantassins.add(fa);
+        }
     }
 
     public List<Mitrailleurs> getMitrailleurs() {
@@ -33,7 +63,10 @@ public class Joueur {
 
     public void setMitrailleurs(List<Mitrailleurs> mitrailleurs) {
         this.mitrailleurs.clear();
-        this.mitrailleurs.addAll(mitrailleurs);
+        for (Mitrailleurs mi : mitrailleurs){
+            mi.setJoueur(this);
+            this.mitrailleurs.add(mi);
+        }
     }
 
     public List<TourMobile> getTourMobiles() {
@@ -42,7 +75,10 @@ public class Joueur {
 
     public void setTourMobiles(List<TourMobile> tourMobiles) {
         this.tourMobiles.clear();
-        this.tourMobiles.addAll(tourMobiles);
+        for (TourMobile tr: tourMobiles){
+            tr.setJoueur(this);
+            this.tourMobiles.add(tr);
+        }
     }
 
     public boolean equals(Joueur joueur){

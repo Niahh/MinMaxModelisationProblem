@@ -82,22 +82,22 @@ public class Mitrailleurs implements Piece{
 
     @Override
     public Case getCase() {
-        return null;
+        return this.cas;
     }
 
     @Override
     public void setCase(Case caseToSet) {
-
+        this.cas = caseToSet;
     }
 
     @Override
     public Joueur getJoueur() {
-        return null;
+        return this.joueur;
     }
 
     @Override
     public void setJoueur(Joueur joueur) {
-
+        this.joueur = joueur;
     }
 
     @Override

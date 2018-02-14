@@ -11,6 +11,8 @@ public class Joueur {
     private List<Mitrailleurs> mitrailleurs = new ArrayList<>();
     private Plateau plateau;
 
+    private List<Action> actions = new ArrayList<>();
+
     public Joueur(Plateau plateau, List<Fantassin> fantassins, List<Mitrailleurs> mitrailleurs, List<TourMobile> tourMobiles){
         this.plateau = plateau;
 
@@ -102,5 +104,13 @@ public class Joueur {
 
     public void setPlateau(Plateau plateau) {
         this.plateau = plateau;
+    }
+
+    public List<Action> getActions() {
+        return actions;
+    }
+
+    public void setActions(List<Action> actions) {
+        this.actions = actions;
     }
 }

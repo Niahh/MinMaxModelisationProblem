@@ -21,11 +21,16 @@ public class Attaque {
         boolean caseExist = this.plateau.getCaseFromPosition(cible) != null;
         boolean canAttaque = false;
 
-        for (Position pos : this.piece.getDeplacementPossible()){
+
+
+        for (Position pos : this.piece.attaquesPossibles()){
             if (pos.equals(cible)){
                 canAttaque = true;
             }
         }
+
+        System.out.println(canAttaque);
+
         return (caseExist && canAttaque);
     }
 

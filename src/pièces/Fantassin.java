@@ -19,9 +19,9 @@ public class Fantassin implements Piece {
 
     public Fantassin(int sens, Case cas)  {
         this.cas = cas;
+        this.sens = sens;
         this.mouvementPossibles();
         this.attaquesPossibles();
-        this.sens = sens;
     }
 
     @Override
@@ -80,7 +80,7 @@ public class Fantassin implements Piece {
 
         this.champAttaque.clear();
 
-        if (sens == 0) {
+        if (this.sens == 0) {
             this.champAttaque.add(new Position(this.cas.getPosition().getPosX(), this.cas.getPosition().getPosY() - 1));
         } else {
             this.champAttaque.add(new Position(this.cas.getPosition().getPosX(), this.cas.getPosition().getPosY() + 1));

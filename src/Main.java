@@ -77,7 +77,7 @@ public class Main {
 
         List<Action> actions = j1.allActionsPossiblePiece(plateau, j1.getFantassins().get(0));
 
-        System.out.println(actions.size());
+        System.out.println("Liste d'action recu dans le main : " + actions.size());
 
         for (Action act : actions){
             act.display();

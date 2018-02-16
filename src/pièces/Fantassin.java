@@ -70,7 +70,7 @@ public class Fantassin implements Piece {
     public List<Position> mouvementPossibles() {
 
         this.deplacementPossible.clear();
-        this.deplacementPossible = UtilMission3.mouvementBasique(this.cas);
+        this.deplacementPossible = UtilMission3.mouvementFantassin(this.cas);
 
         return this.deplacementPossible;
     }

@@ -20,9 +20,9 @@ public class Mitrailleurs implements Piece{
 
     public Mitrailleurs(int sens, Case cas){
         this.cas = cas;
+        this.sens = sens;
         this.attaquesPossibles();
         this.mouvementPossibles();
-        this.sens = sens;
     }
 
 

@@ -41,7 +41,6 @@ public class Plateau {
         if (piece.getCase().getPosition().getPosX() >= 0 && piece.getCase().getPosition().getPosX() < tailleLongeur && piece.getCase().getPosition().getPosY() >= 0 && piece.getCase().getPosition().getPosY() < tailleLargeur && symboleExist(piece.getSymbole())){
             this.cases.get((piece.getCase().getPosition().getPosX() + piece.getCase().getPosition().getPosY() * this.tailleLargeur)).setValue(piece.getSymbole());
             this.cases.get((piece.getCase().getPosition().getPosX() + piece.getCase().getPosition().getPosY() * this.tailleLargeur)).setPiece(piece);
-            System.out.println("Piece " + piece.getSymbole() + " insere !");
         } else {
             System.out.println(" XXX La case ne peut pas être inséré XXX");
         }

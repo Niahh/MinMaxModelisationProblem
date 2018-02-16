@@ -19,19 +19,19 @@ public class TourMobile implements Piece {
 
     public TourMobile(int sens, Case cas){
         this.cas = cas;
+        this.sens = sens;
         this.attaquesPossibles();
         this.mouvementPossibles();
-        this.sens = sens;
     }
 
     @Override
     public Case getCase() {
-        return null;
+        return this.cas;
     }
 
     @Override
     public void setCase(Case caseToSet) {
-
+        this.cas = caseToSet;
     }
 
     @Override
@@ -50,14 +50,11 @@ public class TourMobile implements Piece {
     }
 
     public List<Position> getDeplacementPossible() {
-        return deplacementPossible;
+        return this.deplacementPossible;
     }
 
-
-
     public void setDeplacementPossible(List<Position> deplacementPossible) {
-        this.deplacementPossible.clear();
-        this.deplacementPossible.addAll(deplacementPossible);
+        this.deplacementPossible = deplacementPossible;
     }
 
     @Override

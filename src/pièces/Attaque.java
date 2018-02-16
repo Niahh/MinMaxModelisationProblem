@@ -20,8 +20,15 @@ public class Attaque {
     public boolean isPossible(){
         boolean caseExist = this.plateau.getCaseFromPosition(cible) != null;
         boolean canAttaque = false;
+        boolean  isAuthorize = false;
 
-
+        Case ca = this.plateau.getCaseFromPosition(cible);
+        Piece p = ca.getPiece();
+        if (p == null){
+            isAuthorize = true;
+        } else if (p.getJoueur() != this.piece.getJoueur()){
+            isAuthorize = true;
+        }
 
         for (Position pos : this.piece.attaquesPossibles()){
             if (pos.equals(cible)){
@@ -29,16 +36,16 @@ public class Attaque {
             }
         }
 
-        System.out.println(canAttaque);
-
-        return (caseExist && canAttaque);
+        return (caseExist && canAttaque && isAuthorize);
     }
 
     public boolean applyAttaque(){
         if (this.isPossible()){
+
             Case ca = this.plateau.getCaseFromPosition(cible);
             Piece p = ca.getPiece();
-            if (p != null){
+
+            if (p != null) {
                 if (p.getClass() == Mitrailleurs.class){
                     p.getJoueur().getMitrailleurs().remove(p);
                     p.getCase().setToNull();

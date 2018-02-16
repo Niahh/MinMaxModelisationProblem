@@ -18,11 +18,9 @@ public class Action {
     }
 
     public boolean apply(){
-        boolean mvPossible = mouv.applyMouvement();
-        for (Position pos : this.piece.attaquesPossibles()){
-            pos.displayInfoPosition();
-        }
         boolean attqPossible = attq.applyAttaque();
+        boolean mvPossible = mouv.applyMouvement();
+
         return mvPossible && attqPossible;
     }
 
@@ -47,5 +45,21 @@ public class Action {
         this.mouv.display();
         this.attq.display();
         System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+    }
+
+    public Piece getPiece() {
+        return piece;
+    }
+
+    public void setPiece(Piece piece) {
+        this.piece = piece;
+    }
+
+    public Plateau getPlateau() {
+        return plateau;
+    }
+
+    public void setPlateau(Plateau plateau) {
+        this.plateau = plateau;
     }
 }

@@ -108,44 +108,59 @@ public class Joueur {
         this.plateau = plateau;
     }
 
-    public List<Action> allActionsPossiblePiece(Plateau plateau, Piece piece){
-        List<Action > actions = new ArrayList<>();
+    public List<Action> allActionsPossible(Plateau plateau, List<Fantassin> fantassins){
+        List<Action> actions = new ArrayList<>();
 
-        Case cas = piece.getCase();
-
-        System.out.println("Mouvement possibles : " + this.allMouvementsPossiblePiece(plateau, piece).size());
-
-        int attaquesPos = 0;
-
-        for (Position mv : this.allMouvementsPossiblePiece(plateau, piece)){
-            Mouvement mouv = new Mouvement(piece, mv, plateau);
-
-            for (Position attq : allAttaquesPossiblePiece(plateau, mouv)){
-                attaquesPos += allAttaquesPossiblePiece(plateau, mouv).size();
-                actions.add(new Action(plateau, piece, mv, attq));
-            }
+        for (Fantassin f : fantassins){
+            actions.addAll(allActionsPossiblePiece(plateau, f));
         }
 
-        System.out.println("Attaque possibles : " + attaquesPos);
         return actions;
     }
 
-    public List<Position> allAttaquesPossiblePiece(Plateau plateau, Mouvement mv){
+    public List<Action> allActionsPossiblePiece(Plateau plateau, Piece piece){
+        List<Action > actions = new ArrayList<>();
+
+        Position  posTmp = piece.getCase().getPosition();
+        Mouvement mvBack = new Mouvement(piece, posTmp, plateau);
+
+        actions.addAll(this.getAllActionPiecePosSteady(plateau, piece));
+
+        for (Position pos : this.allMouvementsPossiblePiece(plateau, piece)){
+            Mouvement mv = new Mouvement(piece, pos, plateau);
+            mv.applyMouvement();
+            actions.addAll(this.getAllActionPiecePosSteady(plateau, piece));
+        }
+
+        mvBack.applyMouvement();
+
+        return actions;
+    }
+
+    public List<Action> getAllActionPiecePosSteady(Plateau plateau, Piece piece){
+        List<Action> actions = new ArrayList<>();
+
+        for (Position attq : this.allAttaquesPossiblePiece(plateau, piece)){
+            for (Position mv : this.allMouvementsPossiblePiece(plateau, piece)){
+                Action act = new Action(plateau, piece, mv, attq);
+                if (act.getAttq().isPossible()){
+                    actions.add(act);
+                }
+
+            }
+        }
+        return actions;
+    }
+
+    public List<Position> allAttaquesPossiblePiece(Plateau plateau, Piece piece){
         List<Position> attaques = new ArrayList<>();
 
-        Position positionTmp = mv.getPiece().getCase().getPosition();
-
-        mv.applyMouvement();
-
-        for (Position pos : mv.getPiece().attaquesPossibles()){
+        for (Position pos : piece.attaquesPossibles()){
             Case cas = plateau.getCaseFromPosition(pos);
             if (cas != null){
                 attaques.add(pos);
             }
         }
-
-        Mouvement mvReturn = new Mouvement(mv.getPiece(), positionTmp, plateau);
-        mvReturn.applyMouvement();
 
         return attaques;
     }

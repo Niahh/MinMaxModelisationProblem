@@ -49,8 +49,7 @@ public class Mouvement {
     public boolean applyMouvement(){
         if (this.isPossible()){
             Case ca = this.plateau.recoverCaseFromPiece(this.getPiece());
-            ca.setPiece(null);
-            ca.setValue(" ");
+            ca.setToNull();
             Case caseCible = this.getPlateau().getCaseFromPosition(this.getChoixMouvement());
             caseCible.setPiece(this.getPiece());
             caseCible.setValue(this.getPiece().getSymbole());

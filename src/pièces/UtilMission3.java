@@ -40,17 +40,47 @@ public class UtilMission3 {
 
         // Déplacement gauche
         deplacements.add(new Position(cas.getPosition().posX - 1, cas.getPosition().posY));
+
+        // Déplacement droite
+        deplacements.add(new Position(cas.getPosition().posX + 1, cas.getPosition().posY));
+
+        // Déplacement bas
+        deplacements.add(new Position(cas.getPosition().posX , cas.getPosition().posY - 1));
+
+        // Déplacement Haut
+        deplacements.add(new Position(cas.getPosition().posX, cas.getPosition().posY + 1));
+
+        // Déplacement Haut Gauche
+        deplacements.add(new Position(cas.getPosition().posX - 1, cas.getPosition().posY - 1));
+
+        // Déplacement Haut Droit
+        deplacements.add(new Position(cas.getPosition().posX + 1, cas.getPosition().posY - 1));
+
+        // Déplacement Bas Gauche
+        deplacements.add(new Position(cas.getPosition().posX - 1, cas.getPosition().posY + 1));
+
+        // Déplacement Bas Droite
+        deplacements.add(new Position(cas.getPosition().posX + 1, cas.getPosition().posY + 1));
+
+        return deplacements;
+    }
+
+    public static List<Position> mouvementFantassin(Case cas){
+        List<Position> deplacements = new ArrayList<>();
+
+        // Déplacement gauche
+        deplacements.add(new Position(cas.getPosition().posX - 1, cas.getPosition().posY));
         deplacements.add(new Position(cas.getPosition().posX - 2, cas.getPosition().posY));
 
         // Déplacement droite
         deplacements.add(new Position(cas.getPosition().posX + 1, cas.getPosition().posY));
         deplacements.add(new Position(cas.getPosition().posX + 2, cas.getPosition().posY));
 
-        // Déplacement bas
+        // Déplacement Haut
         deplacements.add(new Position(cas.getPosition().posX , cas.getPosition().posY - 1));
         deplacements.add(new Position(cas.getPosition().posX , cas.getPosition().posY - 2));
 
-        // Déplacement Haut
+        // Déplacement Bas
         deplacements.add(new Position(cas.getPosition().posX, cas.getPosition().posY + 1));
         deplacements.add(new Position(cas.getPosition().posX, cas.getPosition().posY + 2));
 
